@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>The Stalkers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {margin: 0; background-color: #1b1b1b; color: #f0f0f0;}
+        section { font-family: 'Times New Roman', Times, serif; line-height: 1.6; margin: 40px; }
+        .entity { position: relative; padding-right: 220px; }
+        h2 { color: #ffcc00; }
+        p { white-space: pre-wrap; font-size: 20px; }
+        article{color: #eee; padding: 40px; text-align: center;}
+    
+    .buttons-container {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  .button svg {
+    width: 50px;
+    height: 50px;
+    fill: #606060;
+    transition: fill 0.3s ease, filter 0.3s ease;
+  }
+  .button:hover {
+    color: #065fd4;
+  }
+  .button:hover svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 5px #065fd4);
+  }
+  .button.liked {
+    color: #065fd4;
+  }
+  .button.liked svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 8px #065fd4);
+  }
+  .count {
+    font-size: 40px;
+    min-width: 40px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  .button.liked .count {
+    color: #065fd4;
+  }
+  #comment-section {
+    text-align: left;
+    margin-top: 40px;
+  }
+  #comment-section h2 {
+    margin-bottom: 10px;
+  }
+  #comment-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  #submit-comment {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #submit-comment:hover {
+    background-color: #044a9e;
+  }
+  #comments-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .comment {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+        <li>
+            <a class="active" href="index.html">< GO BACK</a>
+        </li>
+        </ul>
+    </div>
+    
+    <section class="entity">
+        <h2>The Stalkers</h2>
+        <p>Stalkers са бързи и тихи преследвачи, които се крият в сенките и чакат подходящ момент да атакуват. Те имат издължени тела и дълги крайници, което им позволява да се движат неусетно и да изчезват без следа.
+    Тези същества предизвикват силен страх и чувство за преследване. Те използват звуци и движение, за да те дезориентират и изтощят психически.
+Местонахождение: Stalkers се появяват в тъмни коридори и изоставени сгради, където шумовете са заглушени.
+
+Как да оцелееш: Бъди винаги нащрек, използвай светлина и силни звуци, за да ги държиш на разстояние. Не спирай и не се обръщай назад.</p>
+    <img src="data:image/jpeg;base64,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" alt="The Stalkers" style="width: 450px; height: auto; margin-top: 30px;">
+</section>
+
+    <article class="buttons-container">
+  <article class="button" id="likeButton" title="Харесвам">
+    <svg viewBox="0 0 24 24" >
+      <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+    </svg>
+    <span class="count" id="likeCount">0</span>
+  </article>
+
+  <article class="button" id="dislikeButton" title="Не харесвам">
+    <svg viewBox="0 0 24 24">
+      <path d="M15 3h-7c-.83 0-1.54.5-1.84 1.22L1 12.5v2.5c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32a1 1 0 0 0 .29.7L9.83 22l6.58-6.59c.37-.36.59-.86.59-1.41v-9c0-1.1-.9-2-2-2z"/>
+    </svg>
+    <span class="count" id="dislikeCount">0</span>
+  </article>
+    </article>
+
+<section id="comment-section">
+  <h2>Коментари</h2>
+  <textarea id="comment-input" placeholder="Напишете коментар тук..."></textarea>
+  <br />
+  <button id="submit-comment">Изпрати</button>
+
+  <article id="comments-list"></article>
+</section>
+
+<script>
+  const likeBtn = document.getElementById('likeButton');
+  const dislikeBtn = document.getElementById('dislikeButton');
+  const likeCountEl = document.getElementById('likeCount');
+  const dislikeCountEl = document.getElementById('dislikeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let dislikes = parseInt(localStorage.getItem('dislikes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+  let disliked = localStorage.getItem('disliked') === 'true';
+
+  likeCountEl.textContent = likes;
+  dislikeCountEl.textContent = dislikes;
+
+  if (liked) likeBtn.classList.add('liked');
+  if (disliked) dislikeBtn.classList.add('liked');
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeBtn.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeBtn.classList.add('liked');
+
+      if (disliked) {
+        dislikes--;
+        disliked = false;
+        dislikeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      dislikes--;
+      disliked = false;
+      dislikeBtn.classList.remove('liked');
+    } else {
+      dislikes++;
+      disliked = true;
+      dislikeBtn.classList.add('liked');
+
+      if (liked) {
+        likes--;
+        liked = false;
+        likeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  function updateStorageAndUI() {
+    likeCountEl.textContent = likes;
+    dislikeCountEl.textContent = dislikes;
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('dislikes', dislikes);
+    localStorage.setItem('liked', liked);
+    localStorage.setItem('disliked', disliked);
+  }
+
+  const commentInput = document.getElementById('comment-input');
+  const submitCommentBtn = document.getElementById('submit-comment');
+  const commentsList = document.getElementById('comments-list');
+
+  let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  renderComments();
+
+  submitCommentBtn.addEventListener('click', () => {
+    const commentText = commentInput.value.trim();
+    if (commentText === '') {
+      alert('Моля, напишете коментар преди да изпратите.');
+      return;
+    }
+    comments.push(commentText);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    commentInput.value = '';
+    renderComments();
+  });
+
+  function renderComments() {
+    commentsList.innerHTML = '';
+    if (comments.length === 0) {
+      commentsList.innerHTML = '<p>Няма коментари все още.</p>';
+      return;
+    }
+    comments.forEach(comment => {
+      const p = document.createElement('p');
+      p.classList.add('comment');
+      p.textContent = comment;
+      commentsList.appendChild(p);
+    });
+  }
+  </script>
+
+</body>
+</html>

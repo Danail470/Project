@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Hounds</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {margin: 0; background-color: #1b1b1b; color: #f0f0f0;}
+        section { font-family: 'Times New Roman', Times, serif; line-height: 1.6; margin: 40px; }
+        .entity { position: relative; padding-right: 220px; }
+        h2 { color: #ffcc00; }
+        p { white-space: pre-wrap; font-size: 20px; }
+        article{color: #eee; padding: 40px; text-align: center;}
+    
+    .buttons-container {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  .button svg {
+    width: 50px;
+    height: 50px;
+    fill: #606060;
+    transition: fill 0.3s ease, filter 0.3s ease;
+  }
+  .button:hover {
+    color: #065fd4;
+  }
+  .button:hover svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 5px #065fd4);
+  }
+  .button.liked {
+    color: #065fd4;
+  }
+  .button.liked svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 8px #065fd4);
+  }
+  .count {
+    font-size: 40px;
+    min-width: 40px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  .button.liked .count {
+    color: #065fd4;
+  }
+  #comment-section {
+    text-align: left;
+    margin-top: 40px;
+  }
+  #comment-section h2 {
+    margin-bottom: 10px;
+  }
+  #comment-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  #submit-comment {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #submit-comment:hover {
+    background-color: #044a9e;
+  }
+  #comments-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .comment {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+        <li>
+            <a class="active" href="index.html">< GO BACK</a>
+        </li>
+        </ul>
+    </div>
+    
+    <section class="entity">
+        <h2>The Hounds</h2>
+        <p>The Hounds са ловци в Backrooms - бързи, гъвкави и безмилостни. Те приличат на големи, обезобразени кучета с дълги крайници и остри зъби, които изпускат непоносим звук при приближаване. Те никога не издават гавкане или лай, а само дълбоки, гърлени стонове, които те пълнят с ужас.
+    Тези същества са изключително ловки и ловуват на групи, като комуникират чрез хрипове и телепатични сигнали. Ако усетиш присъствието на The Hounds, е почти сигурно, че те ще започнат да те преследват безмилостно.
+Местонахождение: The Hounds обитават по - широките пространства и изоставените складове, където има достатъчно място за преследване.
+
+Как да оцелееш: Не се опитвай да ги атакуваш — бягай бързо и търси тесни пространства, където техните движения са ограничени. Използвай шумове, за да ги объркаш и отвлечеш вниманието им.</p>
+    <img src="data:image/jpeg;base64,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" alt="The Hounds" style="width: 550px; height: auto; margin-top: 15px;">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIHERUTEhMVFRMXGBgZGRQYGBgVFxUYHhgXGB4XGB0YICggHBolHRgYIzUiMSkrMC4uHSE/ODUsOCgtLzABCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAwEAAwEAAAAAAAAAAAAABQYHBAIDCAH/xABDEAABAwIFAQYDBwEFBQkAAAABAAIDBBEFBhIhMUETIlFhcYEHMpEUI0JSobHBghUzYpLwF6LR4fEWQ1Nyk7KzwtL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A3FERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQERLoCL8Buv1AREQEREBERAREQEREBERAREQEREBERARFXsSzG+NxZTU75iB/eXDIibkEA7uJFvy2873sFhX4XBvKpVRWYlMPvJaamB/CCC4epedvooatijcbS1E9ZIeI4r6CfMjugILvX5opKAlr5m6h+Bvfd6WbfdV6t+JUEJsyGQnprLY7+diS63soWiyzW4j8rY6ODwFw8j1sf4UjHk7DcMF3OkfIeS0mTUfQNQe6DPM1ZtHT736XI93EAfopJgxCtG744QRzfU4elhZceIZYcxrZKZ4j23a9vI89+VxYZhlbUus6SMM6kb7eQ/6IJyXB2aR29VVSEcntOzafaIAWXA+ioWX70v8A68v/AOlLsyvTRglwe4nk63tufIA7KMxChw2k2kaW+faPv+ruUHM/CYYLSU1VPCTuCZHSsd5ODz+y8G52kwezatjpG32nhbdpH+IdPrv4KKqMLoq68VNiUkUn5Hhso6nYd13+8qjiGMVOVHmGcB7XfJMLFkgFxcEeQNwevoUG1YVmGmxW3ZTMeT0vZ3+U7/opcLJ8AwqmzE3XYxvt87CRvz8p7v6XU9TQYngg7rm1EY6EkG3le9kF6RRmFYy2vbu10buC11ufIhSaAiIgIiIC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" alt="The Hounds" style="width: 450px; height: auto; margin-left: 550px; margin-top: 15px;">
+</section>
+
+<article class="buttons-container">
+  <article class="button" id="likeButton" title="Харесвам">
+    <svg viewBox="0 0 24 24" >
+      <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+    </svg>
+    <span class="count" id="likeCount">0</span>
+  </article>
+
+  <article class="button" id="dislikeButton" title="Не харесвам">
+    <svg viewBox="0 0 24 24">
+      <path d="M15 3h-7c-.83 0-1.54.5-1.84 1.22L1 12.5v2.5c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32a1 1 0 0 0 .29.7L9.83 22l6.58-6.59c.37-.36.59-.86.59-1.41v-9c0-1.1-.9-2-2-2z"/>
+    </svg>
+    <span class="count" id="dislikeCount">0</span>
+  </article>
+    </article>
+
+<section id="comment-section">
+  <h2>Коментари</h2>
+  <textarea id="comment-input" placeholder="Напишете коментар тук..."></textarea>
+  <br />
+  <button id="submit-comment">Изпрати</button>
+
+  <article id="comments-list"></article>
+</section>
+
+<script>
+  const likeBtn = document.getElementById('likeButton');
+  const dislikeBtn = document.getElementById('dislikeButton');
+  const likeCountEl = document.getElementById('likeCount');
+  const dislikeCountEl = document.getElementById('dislikeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let dislikes = parseInt(localStorage.getItem('dislikes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+  let disliked = localStorage.getItem('disliked') === 'true';
+
+  likeCountEl.textContent = likes;
+  dislikeCountEl.textContent = dislikes;
+
+  if (liked) likeBtn.classList.add('liked');
+  if (disliked) dislikeBtn.classList.add('liked');
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeBtn.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeBtn.classList.add('liked');
+
+      if (disliked) {
+        dislikes--;
+        disliked = false;
+        dislikeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      dislikes--;
+      disliked = false;
+      dislikeBtn.classList.remove('liked');
+    } else {
+      dislikes++;
+      disliked = true;
+      dislikeBtn.classList.add('liked');
+
+      if (liked) {
+        likes--;
+        liked = false;
+        likeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  function updateStorageAndUI() {
+    likeCountEl.textContent = likes;
+    dislikeCountEl.textContent = dislikes;
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('dislikes', dislikes);
+    localStorage.setItem('liked', liked);
+    localStorage.setItem('disliked', disliked);
+  }
+
+  const commentInput = document.getElementById('comment-input');
+  const submitCommentBtn = document.getElementById('submit-comment');
+  const commentsList = document.getElementById('comments-list');
+
+  let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  renderComments();
+
+  submitCommentBtn.addEventListener('click', () => {
+    const commentText = commentInput.value.trim();
+    if (commentText === '') {
+      alert('Моля, напишете коментар преди да изпратите.');
+      return;
+    }
+    comments.push(commentText);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    commentInput.value = '';
+    renderComments();
+  });
+
+  function renderComments() {
+    commentsList.innerHTML = '';
+    if (comments.length === 0) {
+      commentsList.innerHTML = '<p>Няма коментари все още.</p>';
+      return;
+    }
+    comments.forEach(comment => {
+      const p = document.createElement('p');
+      p.classList.add('comment');
+      p.textContent = comment;
+      commentsList.appendChild(p);
+    });
+  }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>The Smilers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {margin: 0; background-color: #1b1b1b; color: #f0f0f0;}
+        section { font-family: 'Times New Roman', Times, serif; line-height: 1.6; margin: 40px; }
+        .entity { position: relative; padding-right: 220px; }
+        h2 { color: #ffcc00; }
+        p { white-space: pre-wrap; font-size: 20px; }
+        article{color: #eee; padding: 40px; text-align: center;}
+    
+    .buttons-container {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  .button svg {
+    width: 50px;
+    height: 50px;
+    fill: #606060;
+    transition: fill 0.3s ease, filter 0.3s ease;
+  }
+  .button:hover {
+    color: #065fd4;
+  }
+  .button:hover svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 5px #065fd4);
+  }
+  .button.liked {
+    color: #065fd4;
+  }
+  .button.liked svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 8px #065fd4);
+  }
+  .count {
+    font-size: 40px;
+    min-width: 40px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  .button.liked .count {
+    color: #065fd4;
+  }
+  #comment-section {
+    text-align: left;
+    margin-top: 40px;
+  }
+  #comment-section h2 {
+    margin-bottom: 10px;
+  }
+  #comment-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  #submit-comment {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #submit-comment:hover {
+    background-color: #044a9e;
+  }
+  #comments-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .comment {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+        <li>
+            <a class="active" href="index.html">< GO BACK</a>
+        </li>
+        </ul>
+    </div>
+    
+    <section class="entity">
+        <h2>The Smilers</h2>
+        <p>Smilers са едни от най-зловещите създания в Backrooms - те не са просто обикновени чудовища, а символ на чистия страх и безпокойство. Представи си дълбока, мрачна тъмнина, от която те гледат само две жълти, блестящи очи и широка, изкривена усмивка, изпълнена с остри като бръснач зъби. Те никога не издават звук, освен своята ужасяваща усмивка, която сякаш прозират в твоята душа и пробужда най - дълбоките ти страхове. Когато усетиш, че си наблизо на Smilers, светлината започва да избледнява и въздухът се сгъстява - сякаш пространството около теб се свива.
+    Smilers не преследват жертвите си активно, но ако попаднеш в тяхната „зона“, усещането за паника и безпомощност бързо те обземат. Хора, които са се сблъсквали с тях, описват чувството като да си наблюдаван от нещо нечовешко и нечувано, което чака само миг на слабост, за да те обгърне и да те накара да изчезнеш. Те не оставят никакви следи, нито рани - само мрака и страхът остават след тях.
+Местонахождение:
+Smilers се срещат главно в безкрайни коридори и изоставени пространства, където светлината е почти напълно погълната. Обикновено се крият в най - тъмните ъгли на Backrooms, където дори да светнеш фенер, сенките изглеждат по - дълбоки и опасни.
+
+Как да оцелееш:
+Най-добрата защита срещу Smilers е силната светлина — ярки фенери, лампи с нажежаема жичка или дори огън могат да ги държат на разстояние. Никога не се обръщай с гръб или не ги гледай директно в очите - това може да те привлече. Ако усетиш присъствието им, бягай бързо и не спирай докато не излезеш от тъмнината.</p>
+    <img src="data:image/jpeg;base64,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" alt="The Smilers" style="width: 350px; height: auto; margin-top: 25px;">
+</section>
+
+    <article class="buttons-container">
+  <article class="button" id="likeButton" title="Харесвам">
+    <svg viewBox="0 0 24 24" >
+      <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+    </svg>
+    <span class="count" id="likeCount">0</span>
+  </article>
+
+  <article class="button" id="dislikeButton" title="Не харесвам">
+    <svg viewBox="0 0 24 24">
+      <path d="M15 3h-7c-.83 0-1.54.5-1.84 1.22L1 12.5v2.5c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32a1 1 0 0 0 .29.7L9.83 22l6.58-6.59c.37-.36.59-.86.59-1.41v-9c0-1.1-.9-2-2-2z"/>
+    </svg>
+    <span class="count" id="dislikeCount">0</span>
+  </article>
+    </article>
+
+<section id="comment-section">
+  <h2>Коментари</h2>
+  <textarea id="comment-input" placeholder="Напишете коментар тук..."></textarea>
+  <br />
+  <button id="submit-comment">Изпрати</button>
+
+  <article id="comments-list"></article>
+</section>
+
+<script>
+  const likeBtn = document.getElementById('likeButton');
+  const dislikeBtn = document.getElementById('dislikeButton');
+  const likeCountEl = document.getElementById('likeCount');
+  const dislikeCountEl = document.getElementById('dislikeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let dislikes = parseInt(localStorage.getItem('dislikes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+  let disliked = localStorage.getItem('disliked') === 'true';
+
+  likeCountEl.textContent = likes;
+  dislikeCountEl.textContent = dislikes;
+
+  if (liked) likeBtn.classList.add('liked');
+  if (disliked) dislikeBtn.classList.add('liked');
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeBtn.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeBtn.classList.add('liked');
+
+      if (disliked) {
+        dislikes--;
+        disliked = false;
+        dislikeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      dislikes--;
+      disliked = false;
+      dislikeBtn.classList.remove('liked');
+    } else {
+      dislikes++;
+      disliked = true;
+      dislikeBtn.classList.add('liked');
+
+      if (liked) {
+        likes--;
+        liked = false;
+        likeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  function updateStorageAndUI() {
+    likeCountEl.textContent = likes;
+    dislikeCountEl.textContent = dislikes;
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('dislikes', dislikes);
+    localStorage.setItem('liked', liked);
+    localStorage.setItem('disliked', disliked);
+  }
+
+  const commentInput = document.getElementById('comment-input');
+  const submitCommentBtn = document.getElementById('submit-comment');
+  const commentsList = document.getElementById('comments-list');
+
+  let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  renderComments();
+
+  submitCommentBtn.addEventListener('click', () => {
+    const commentText = commentInput.value.trim();
+    if (commentText === '') {
+      alert('Моля, напишете коментар преди да изпратите.');
+      return;
+    }
+    comments.push(commentText);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    commentInput.value = '';
+    renderComments();
+  });
+
+  function renderComments() {
+    commentsList.innerHTML = '';
+    if (comments.length === 0) {
+      commentsList.innerHTML = '<p>Няма коментари все още.</p>';
+      return;
+    }
+    comments.forEach(comment => {
+      const p = document.createElement('p');
+      p.classList.add('comment');
+      p.textContent = comment;
+      commentsList.appendChild(p);
+    });
+  }
+  </script>
+
+</body>
+</html>

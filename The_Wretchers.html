@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>The Wretchers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {margin: 0; background-color: #1b1b1b; color: #f0f0f0;}
+        section { font-family: 'Times New Roman', Times, serif; line-height: 1.6; margin: 40px; }
+        .entity { position: relative; padding-right: 220px; }
+        h2 { color: #ffcc00; }
+        p { white-space: pre-wrap; font-size: 20px; }
+        article{color: #eee; padding: 40px; text-align: center;}
+    
+    .buttons-container {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  .button svg {
+    width: 50px;
+    height: 50px;
+    fill: #606060;
+    transition: fill 0.3s ease, filter 0.3s ease;
+  }
+  .button:hover {
+    color: #065fd4;
+  }
+  .button:hover svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 5px #065fd4);
+  }
+  .button.liked {
+    color: #065fd4;
+  }
+  .button.liked svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 8px #065fd4);
+  }
+  .count {
+    font-size: 40px;
+    min-width: 40px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  .button.liked .count {
+    color: #065fd4;
+  }
+  #comment-section {
+    text-align: left;
+    margin-top: 40px;
+  }
+  #comment-section h2 {
+    margin-bottom: 10px;
+  }
+  #comment-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  #submit-comment {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #submit-comment:hover {
+    background-color: #044a9e;
+  }
+  #comments-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .comment {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+        <li>
+            <a class="active" href="index.html">< GO BACK</a>
+        </li>
+        </ul>
+    </div>
+
+    <section class="entity">
+        <h2>The Wretchers</h2>
+        <p>Wretchers са изкривени, човешкоподобни същества с дълги, деформирани крайници и рязко, неестествено движение. Лицата им са скрити или напълно изкривени, а кожата им изглежда разтегната и белязана. Те са жестоки хищници, които ловуват в групи, използвайки ловкост и дългите си ръце, за да хванат и обездвижат жертвите си.
+    Опасността от тях е висока — издават ужасяващи звуци, които дезориентират и изплашват, карайки хората да се изгубят и паникьосат. Те са безмилостни и няма милост към жертвите си.
+    <br>
+    Местонахождение: Срещат се в тъмни, тесни и заплетени коридори на Backrooms, където светлината е оскъдна и всичко изглежда объркано и опасно.
+    <br>
+    Как да оцелееш: Избягвай такива места и ако чуеш техния вик, бягай бързо и не се обръщай назад. Светлини и шум могат временно да ги отблъснат, но най-добре е да стоиш колкото може по-далеч от тях.
+
+</p>
+        <img src="https://b.thumbs.redditmedia.com/Vjd_DbmbT-SzEdOHuXpGHX-qdfPozmLnZSjr10KBi3o.jpg" alt="The Wretchers" style="width: 430px; height: auto;">
+    </section>
+
+    <article class="buttons-container">
+  <article class="button" id="likeButton" title="Харесвам">
+    <svg viewBox="0 0 24 24" >
+      <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+    </svg>
+    <span class="count" id="likeCount">0</span>
+  </article>
+
+  <article class="button" id="dislikeButton" title="Не харесвам">
+    <svg viewBox="0 0 24 24">
+      <path d="M15 3h-7c-.83 0-1.54.5-1.84 1.22L1 12.5v2.5c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32a1 1 0 0 0 .29.7L9.83 22l6.58-6.59c.37-.36.59-.86.59-1.41v-9c0-1.1-.9-2-2-2z"/>
+    </svg>
+    <span class="count" id="dislikeCount">0</span>
+  </article>
+    </article>
+
+<section id="comment-section">
+  <h2>Коментари</h2>
+  <textarea id="comment-input" placeholder="Напишете коментар тук..."></textarea>
+  <br />
+  <button id="submit-comment">Изпрати</button>
+
+  <article id="comments-list"></article>
+</section>
+
+<script>
+  const likeBtn = document.getElementById('likeButton');
+  const dislikeBtn = document.getElementById('dislikeButton');
+  const likeCountEl = document.getElementById('likeCount');
+  const dislikeCountEl = document.getElementById('dislikeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let dislikes = parseInt(localStorage.getItem('dislikes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+  let disliked = localStorage.getItem('disliked') === 'true';
+
+  likeCountEl.textContent = likes;
+  dislikeCountEl.textContent = dislikes;
+
+  if (liked) likeBtn.classList.add('liked');
+  if (disliked) dislikeBtn.classList.add('liked');
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeBtn.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeBtn.classList.add('liked');
+
+      if (disliked) {
+        dislikes--;
+        disliked = false;
+        dislikeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      dislikes--;
+      disliked = false;
+      dislikeBtn.classList.remove('liked');
+    } else {
+      dislikes++;
+      disliked = true;
+      dislikeBtn.classList.add('liked');
+
+      if (liked) {
+        likes--;
+        liked = false;
+        likeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  function updateStorageAndUI() {
+    likeCountEl.textContent = likes;
+    dislikeCountEl.textContent = dislikes;
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('dislikes', dislikes);
+    localStorage.setItem('liked', liked);
+    localStorage.setItem('disliked', disliked);
+  }
+
+  const commentInput = document.getElementById('comment-input');
+  const submitCommentBtn = document.getElementById('submit-comment');
+  const commentsList = document.getElementById('comments-list');
+
+  let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  renderComments();
+
+  submitCommentBtn.addEventListener('click', () => {
+    const commentText = commentInput.value.trim();
+    if (commentText === '') {
+      alert('Моля, напишете коментар преди да изпратите.');
+      return;
+    }
+    comments.push(commentText);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    commentInput.value = '';
+    renderComments();
+  });
+
+  function renderComments() {
+    commentsList.innerHTML = '';
+    if (comments.length === 0) {
+      commentsList.innerHTML = '<p>Няма коментари все още.</p>';
+      return;
+    }
+    comments.forEach(comment => {
+      const p = document.createElement('p');
+      p.classList.add('comment');
+      p.textContent = comment;
+      commentsList.appendChild(p);
+    });
+  }
+  </script>
+
+</body>
+</html>

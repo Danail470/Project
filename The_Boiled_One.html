@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>The Boiled One</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {margin: 0; background-color: #1b1b1b; color: #f0f0f0;}
+        section { font-family: 'Times New Roman', Times, serif; line-height: 1.6; margin: 40px; }
+        .entity { position: relative; padding-right: 220px; }
+        h2 { color: #ffcc00; }
+        p { white-space: pre-wrap; font-size: 20px; }
+    
+        article{color: #eee; padding: 40px; text-align: center;}
+    
+    .buttons-container {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  .button svg {
+    width: 50px;
+    height: 50px;
+    fill: #606060;
+    transition: fill 0.3s ease, filter 0.3s ease;
+  }
+  .button:hover {
+    color: #065fd4;
+  }
+  .button:hover svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 5px #065fd4);
+  }
+  .button.liked {
+    color: #065fd4;
+  }
+  .button.liked svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 8px #065fd4);
+  }
+  .count {
+    font-size: 40px;
+    min-width: 40px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  .button.liked .count {
+    color: #065fd4;
+  }
+  #comment-section {
+    text-align: left;
+    margin-top: 40px;
+  }
+  #comment-section h2 {
+    margin-bottom: 10px;
+  }
+  #comment-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  #submit-comment {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #submit-comment:hover {
+    background-color: #044a9e;
+  }
+  #comments-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .comment {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+        <li>
+            <a class="active" href="index.html">< GO BACK</a>
+        </li>
+        </ul>
+    </div>
+    
+    <section class="entity">
+        <h2>The Boiled One</h2>
+        <p>The Boiled One е ужасяващо създание, което сякаш не просто съществува, а е извадено от най-дълбоките кътчета на психическа и физическа болка. Представи си фигура на човек, чието тяло е сурово сварено – зачервено, покрито с мехури, с пулсираща рана в гърдите, от която се носи пара. Лицето му е застинало в изкривено изражение на мъка, а очите — големи и човешки — те гледат с празно отчаяние.
+The Boiled One не просто убива — той прониква в ума ти. Съществото се появява най-често чрез аномални телевизионни сигнали. Достатъчно е само да го зърнеш на екран, за да отключиш синдром на заключване – пълен паралич, при който съзнанието ти остава будно, но тялото е в капан. През това време жертвата преживява халюцинации и дълбок екзистенциален ужас.
+Опасността от него е крайна — той не се нуждае от близост, за да те засегне. Достатъчно е само едно предаване, един кратък миг на контакт, за да се превърнеш в още една жертва на варящия ужас.
+Местонахождение: Среща се чрез електронни устройства — телевизори, монитори, радиосигнали. Според слуховете, той обитава нива в Backrooms, където времето и реалността са нестабилни, а старите технологии продължават да излъчват „нещо“.
+<br>
+Как да оцелееш:
+<p>1. Никога не гледай директно в екрани, които показват смущения, неестествени образи или странни фигури.</p>
+<p>2. Избягвай звуци, наподобяващи съскане, кипене или монотонен шепот.</p>
+<p>3. Ако започнеш да се чувстваш зашеметен, повтаряй наум фрази, които потвърждават реалността: „Аз съм реален. Аз се движа. Аз съществувам.“</p>
+<p>4. Прекъсни всички сигнали и се изолирай от електронни устройства.</p>
+<p>5. Не оставай сам, защото той напада най-често, когато си изолиран.</p>
+<p>The Boiled One не е просто враг от плът и кръв. Той е символ на страдание, проклятие, което се разпространява чрез технологии и страх. Най-добрата защита е знанието — и никога, никога да не гледаш прекалено дълго в екрана.</p>
+</p>
+<img src="data:image/jpeg;base64,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" alt="The Blinking Ones" style="width: 550px; height: auto;">
+    </section>
+
+    <article class="buttons-container">
+  <article class="button" id="likeButton" title="Харесвам">
+    <svg viewBox="0 0 24 24" >
+      <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+    </svg>
+    <span class="count" id="likeCount">0</span>
+  </article>
+
+  <article class="button" id="dislikeButton" title="Не харесвам">
+    <svg viewBox="0 0 24 24">
+      <path d="M15 3h-7c-.83 0-1.54.5-1.84 1.22L1 12.5v2.5c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32a1 1 0 0 0 .29.7L9.83 22l6.58-6.59c.37-.36.59-.86.59-1.41v-9c0-1.1-.9-2-2-2z"/>
+    </svg>
+    <span class="count" id="dislikeCount">0</span>
+  </article>
+    </article>
+
+<section id="comment-section">
+  <h2>Коментари</h2>
+  <textarea id="comment-input" placeholder="Напишете коментар тук..."></textarea>
+  <br />
+  <button id="submit-comment">Изпрати</button>
+
+  <article id="comments-list"></article>
+</section>
+
+<script>
+  const likeBtn = document.getElementById('likeButton');
+  const dislikeBtn = document.getElementById('dislikeButton');
+  const likeCountEl = document.getElementById('likeCount');
+  const dislikeCountEl = document.getElementById('dislikeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let dislikes = parseInt(localStorage.getItem('dislikes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+  let disliked = localStorage.getItem('disliked') === 'true';
+
+  likeCountEl.textContent = likes;
+  dislikeCountEl.textContent = dislikes;
+
+  if (liked) likeBtn.classList.add('liked');
+  if (disliked) dislikeBtn.classList.add('liked');
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeBtn.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeBtn.classList.add('liked');
+
+      if (disliked) {
+        dislikes--;
+        disliked = false;
+        dislikeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      dislikes--;
+      disliked = false;
+      dislikeBtn.classList.remove('liked');
+    } else {
+      dislikes++;
+      disliked = true;
+      dislikeBtn.classList.add('liked');
+
+      if (liked) {
+        likes--;
+        liked = false;
+        likeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  function updateStorageAndUI() {
+    likeCountEl.textContent = likes;
+    dislikeCountEl.textContent = dislikes;
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('dislikes', dislikes);
+    localStorage.setItem('liked', liked);
+    localStorage.setItem('disliked', disliked);
+  }
+
+  const commentInput = document.getElementById('comment-input');
+  const submitCommentBtn = document.getElementById('submit-comment');
+  const commentsList = document.getElementById('comments-list');
+
+  let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  renderComments();
+
+  submitCommentBtn.addEventListener('click', () => {
+    const commentText = commentInput.value.trim();
+    if (commentText === '') {
+      alert('Моля, напишете коментар преди да изпратите.');
+      return;
+    }
+    comments.push(commentText);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    commentInput.value = '';
+    renderComments();
+  });
+
+  function renderComments() {
+    commentsList.innerHTML = '';
+    if (comments.length === 0) {
+      commentsList.innerHTML = '<p>Няма коментари все още.</p>';
+      return;
+    }
+    comments.forEach(comment => {
+      const p = document.createElement('p');
+      p.classList.add('comment');
+      p.textContent = comment;
+      commentsList.appendChild(p);
+    });
+  }
+</script>
+</body>
+</html>

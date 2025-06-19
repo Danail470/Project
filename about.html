@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The_About_Info</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+    body {
+        background-image: url();
+        font-family: 'Times New Roman', Times, serif;
+        margin: 0;
+        background-color: #1b1b1b
+    }
+    h1 {
+        text-align: center;
+        font-size: 50px;
+        color: rgb(218, 202, 202);
+    }
+    p{
+      color: rgb(168, 151, 151);
+      font-size: 20px;
+    }
+    h2{
+      color: rgb(198, 186, 186);
+      font-size: 30px;
+    }
+    .like-button {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #606060;
+      font-size: 16px;
+      gap: 8px;
+    }
+    .like-button svg {
+      width: 24px;
+      height: 24px;
+      fill: #606060;
+      transition: fill 0.3s ease;
+    }
+    .like-button.liked svg {
+      fill: #065fd4; /* YouTube blue */
+      filter: drop-shadow(0 0 5px #065fd4);
+    }
+    .like-count {
+      font-size: 18px;
+      color: #606060;
+      transition: color 0.3s ease;
+    }
+    .like-button.liked .like-count {
+      color: #065fd4;
+      font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <div>
+    <a href="start.html">Home</a></li>
+    <ul>
+        <li>
+            <a href="index.html">Creatures ▼</a>
+                <ul>
+                    <li><a href="The_Nulls.html">The Nulls</a></li>
+                    <li><a href="The_Boiled_One.html">The Boiled One</a></li>
+                    <li><a href="The_Smilers.html">The Smilers</a></li>
+                    <li><a href="The_Hounds.html">The Hounds</a></li>
+                    <li><a href="The_Facelings.html">The Facelings</a></li>
+                    <li><a href="The_Lurkers.html">The Lurkers</a></li>
+                    <li><a href="The_Stalkers.html">The Stalkers</a></li>
+                    <li><a href="The_Wretchers.html">The Wretchers</a></li>
+                </ul>
+        </li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="merch.html">Merch</a></li>
+  <li class="right"><a class="active" href="about.html">About</a></li>
+    </div>
+    <h1>За Нас!</h1>
+    <h2>Кои сме ние?</h2>
+    <i><p>Ние сме ученици от ПГКМКС "Акадамеки Благовест Сендов", които учат HTML и CSS. Този сайт е тест.</p></i>
+    <h2>Каква е задачата на този сайт?</h2>
+    <i><p>Този сайт има за задача да дава информация за фантастичната поредица The Backrooms с много светове и създания. Друга задача е да е просто тестов сайт.</p></i>
+
+  <section class="like-button" id="likeButton" title="Харесвам">
+  <svg viewBox="0 0 24 24" >
+    <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+  </svg>
+  <span class="like-count" id="likeCount">0</span>
+  </section>
+
+<script>
+  const likeButton = document.getElementById('likeButton');
+  const likeCountEl = document.getElementById('likeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+
+  likeCountEl.textContent = likes;
+
+  if (liked) {
+    likeButton.classList.add('liked');
+  }
+
+  likeButton.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeButton.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeButton.classList.add('liked');
+    }
+
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('liked', liked);
+
+    likeCountEl.textContent = likes;
+  });
+</script>
+
+</body>
+</html>

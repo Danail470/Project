@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The_Contacts</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+  body {
+    background-image: url();
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    background-color: #1b1b1b;
+}
+h1{
+    text-align: center;
+}
+section{display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    size: cover;}
+ form {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ff99;
+      width: 300px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      background: #00ff99;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      color: #000;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #00cc77;
+    }
+</style>
+</head>
+<body>
+    <div>
+    <a href="start.html">Home</a></li>
+    <ul>
+        <li>
+            <a href="index.html">Creatures ▼</a>
+                <ul>
+                    <li><a href="The_Nulls.html">The Nulls</a></li>
+                    <li><a href="The_Boiled_One.html">The Boiled One</a></li>
+                    <li><a href="The_Smilers.html">The Smilers</a></li>
+                    <li><a href="The_Hounds.html">The Hounds</a></li>
+                    <li><a href="The_Facelings.html">The Facelings</a></li>
+                    <li><a href="The_Lurkers.html">The Lurkers</a></li>
+                    <li><a href="The_Stalkers.html">The Stalkers</a></li>
+                    <li><a href="The_Wretchers.html">The Wretchers</a></li>
+                </ul>
+        </li>
+  <li><a class="active" href="contact.html">Contact</a></li>
+  <li><a href="merch.html">Merch</a></li>
+  <li class="right"><a  href="about.html">About</a></li>
+    </div>
+    <strong><i><h1>CONTACT WITH US</h1></i></strong>
+      
+    <section>
+    <form id="contactForm">
+    <h2>Свържи се с мен</h2>
+    
+    <label for="name">Име:</label>
+    <input type="text" id="name" name="name" placeholder="Твоето име" required />
+    
+    <label for="phone">Телефон:</label>
+    <input type="tel" id="phone" name="phone" placeholder="+359 xxx xxx xxx" pattern="[+0-9\s\-]{7,15}" required />
+    
+    <label for="email">Имейл:</label>
+    <input type="email" id="email" name="email" placeholder="example@mail.com" required />
+    
+    <button type="submit">Изпрати</button>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = e.target.name.value.trim();
+      const phone = e.target.phone.value.trim();
+      const email = e.target.email.value.trim();
+
+      if(!name || !phone || !email) {
+        alert('Моля, попълнете всички полета.');
+        return;
+      }
+
+      alert(`Благодаря, ${name}! Ще се свържем с теб на телефон ${phone} или имейл ${email}.`);
+      
+      e.target.reset();
+    });
+  </script>
+</section>
+
+</body>
+</html>

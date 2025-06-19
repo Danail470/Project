@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>The Facelings</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {margin: 0; background-color: #1b1b1b; color: #f0f0f0;}
+        section { font-family: 'Times New Roman', Times, serif; line-height: 1.6; margin: 40px; }
+        .entity { position: relative; padding-right: 220px; }
+        h2 { color: #ffcc00; }
+        p { white-space: pre-wrap; font-size: 20px; }
+        article{color: #eee; padding: 40px; text-align: center;}
+    
+    .buttons-container {
+    display: inline-flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  .button svg {
+    width: 50px;
+    height: 50px;
+    fill: #606060;
+    transition: fill 0.3s ease, filter 0.3s ease;
+  }
+  .button:hover {
+    color: #065fd4;
+  }
+  .button:hover svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 5px #065fd4);
+  }
+  .button.liked {
+    color: #065fd4;
+  }
+  .button.liked svg {
+    fill: #065fd4;
+    filter: drop-shadow(0 0 8px #065fd4);
+  }
+  .count {
+    font-size: 40px;
+    min-width: 40px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  .button.liked .count {
+    color: #065fd4;
+  }
+  #comment-section {
+    text-align: left;
+    margin-top: 40px;
+  }
+  #comment-section h2 {
+    margin-bottom: 10px;
+  }
+  #comment-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  #submit-comment {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #submit-comment:hover {
+    background-color: #044a9e;
+  }
+  #comments-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .comment {
+    border-bottom: 1px solid #444;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+        <li>
+            <a class="active" href="index.html">< GO BACK</a>
+        </li>
+        </ul>
+    </div>
+    <section class="entity">
+        <h2>The Facelings</h2>
+        <p>Facelings са безлични човешки форми, които изглеждат като хора, но без никакви черти на лицето. Те се движат бавно и безцелно, но когато те забележат, могат да станат агресивни и да те преследват до изтощение.
+    Тези същества са символ на загубена идентичност и отчаяние. Те са почти неми, но понякога издават тихи, безсмислени звуци, които карат жертвите да се чувстват объркани и уязвими.
+Местонахождение: Facelings се срещат най-често в празни, безжизнени коридори и офиси, където няма следи от живот.
+
+Как да оцелееш: Избягвай контакт с тях и се придвижвай бързо. Не гледай в очите им и не позволявай да те обгърнат.</p>
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQDw8PDxAPEA0PDQ8NDQ0PDw8NDQ0NFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFQ8PFSsZFhkrLSsrLS0rLS0rKy0rKy0rLSstKy4tKysrLSs3LS0tLS0tNzcrLSstKysrLSsrKysrK//AABEIAP4AxgMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAABAwACBQQGB//EADwQAAIBAwIDBQYDBgUFAAAAAAABAgMREgQhBTFRBkFhcZETFCJSgaEVorEHIzJCkuEkYnLB8ENTY4LR/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAeEQEBAAMBAQADAQAAAAAAAAAAAQIRMSEDEkFxBP/aAAwDAQACEQMRAD8A1sg5iUwqR4nY1SYchWQcihuRMhSkFSAbcmQu5MgGZEuKyDkNhlyZCsiZDYZkDIXkTIC7YLlMgZEF2wXKXA2BfIq2VuBsLpZyA5FblWwLORVyA2VbCi5EKtgIH5EyFZBuA25Li8iZANuS4nImQDsg5CcyZgOyJkJyJmENyJkKcgZAOyBkKyA2FNciZCsgZAOyBkJcgZgOcirkKyBkA1yA5CnIq5gNcgNinMq5gNciCMggOyDmIyJcKfmTIRcNwHZAyFXJkA3IOYnImQDsiZicwZkDsyZiciZFDsgOYnImQDsgZCsgZAOyBkJzBkA7IGQnIq5APyK5CciOQDcyrmKyDFXAtkQZGJAK5EyKZBTILZBuLuS4F5PpzDooZ7TqqFnv8F9uvMVclyX1WpV0WnS21bb6KEUZM541HHJzg18MrW3XULOTiWuhQhlUbUXJR2Te7El/pbBq6+ztaz7klckNRVf8vrZIRwvW06zqTp3cVKMbtOPd4neNX9tbn6XjUdlfn3+YcxdwXKwbkTIXclwGZkzF3JcC+RMilwXAvkVyK5AbCL5AuVSLxiAYRHIrEugqyCGJAOZQfR+jLKD6P0O5BIrh9m+jJ7KXRneQDh9hLoT3eXQ7yDY4PdpdDzHbynKNKjfZOrLv78T21jyv7Q4f4em+lb9Ys3h2M58rF7Eaj450G1epaUL7XlFO69P0PaPSS8PU+YcJ1CpV6NRuyhVjJvpG+/2PrTmnHKLTi1dNbprqa+s1ds/O+aee11eopOFNL4f4pvffokcsNVWhK82pQvvZJWXVGhKHxz8ZNi9RS2fkcPye+fHHTSpUG0mmt1dbjPdX1QeHL91Dwgl6I6jTy2OT3V9UT3V9UdZCo4/dn1X3B7r4nYyrIOX3bxFVKNu+53CNQuQHOkFEaCglXiMiLiMRReKIGJAHoJCEVAkQQIgtgCADO7QaBV9POm+l1tf4lyZpAYl9K+LVqbjJxkrSi7NeJs8D7S1tNaD/AHlBKypOycV/lfcafbbguL9vBbfz+K5X+h49Hqmso89n417uhxilWk3BtX3xls1/9G19Skm3ySu/I8Po9S6dSMuaT3R28S4tKqsYrCn05Sl52ON+PvnHsx/0yY+9fTOGyUqVOUXeMoJp+FjpaPlnCuP6jT2UJ5U1/wBKfxQt4dD3vAePU9XF2ThVirzpvp1j1RMsLHGZ7apA2AzLQMFiwGQUE6juOhnPqO4BDCgMKRUq0RsRcRkQGRAGJAHhsAJFEhAjQhCEIISwSAc2t0yqQlBpNNd58l4roXQrSpvkt4/6T7EfOv2gU7aqErfxUU/qmzr8r65/SePMxHaXTSqSxi1ezfxO308xa5FVJrwPTXPHW5vi1WDjJxfOLafmd3ANW6WpozX/AHIxl4wk7NfczW9xumqYyjL5ZRl6O5LPEt98fZAApzUoprk0mvqrhZ5HpiACQCojUdx0CNR3AczCgMiCUyIyIuIxAMiAMSAPCAJNKIQBKCQhCUQhCDQB4b9otH49PPuxnB+d0z3LPN9utNnpc0runNS+nJm8LqxnObj502UuGTKnqjzhfctApItAD6zwCtnpaEv/ABRT80rf7HeYnYyV9FS8JVF6TZtnkvXpx4hCAIoCdR3DhOo5LzA5mRAYUEq8RkRcRkShsQEiQDoCVuFEVYJUIBIAgBIAIEOLjKXsKt+Sg39jsMztLK2lq+UV+ZCdSvm9bQbfCle63u1tbcXHh7+G+9neavs10NCMhkf1O+642RmanRJOUksY2doXcsfq+ZxI3a6+F+VjCexvG7ZsfS+xitoqX+qo/wAzNwwuxl/cqV/mqNeWTsbh5su13x4ICMDI0gnUcl5jWI1HJeYHOwoDIEq6GxFIZEoZEgYgAeRAQSKsmG5RMNwLBuC5ADcgCAEye07/AMLU84L8yNRsy+0kb6Wr4KMvRoTqXjwMZWbTOqG6OKb3uddGW1zs5I9PKrLCLSbTs3yRyPglaNSEJxeMpJZx+KNjQ0VdQqZPljI3+GVlVqKzbUXvfrYzcrHTHDG47vWzw3TqnShBKyitl0OoqmRs5tQSrZAXANxOp5LzGsTqHsvMDnZERkQSmIvFi4l4lDkQEQgMuWTFplkyKsErcNwCg3KkAIJzSTb5IhSvDKLj1RBeFRSV1yOficMqNWPWnL9C+np4xxbT5lqiumuqaLEr5dNjdNO8WuguvDeS6Sa9GTSL+I7zjibfc9Z2TprCpK2+dk/BI8jO/Q9p2Xt7tFr+aUm/O5nPjWPWyAFwXOTqLYLkAAbidRy+o24rU8l5gIIitwoqLxGoTEamEOiQESAXRLmP+Mv5PuWXF38n3JpdthBMj8Xl8n3J+MP5PzAbBDH/ABl/J+b+wfxh/J+b+w0NchkPjEvlX9X9gfjEvkX9TGjbXA0zI/Gp/Kv6mB8an8v5mB4zjCw1FaLW3tJfd3Ead8zs7RTcqzm1bNX9Njh08L3V7d53nHG9dcYv6HrOykf3EuntZW8NkeSjTa8fqbfBuISpwcUk05t732dkZy41j16yxLGJ+MT+VfcL4tPpH7s56dNtlgZiy4rPpH7lHxafSPoxo222K1D2Mf8AFan+X0KriU21la3lYaNtK5ZHL7e+Lj8yUl4HQghqGIUhkWA6JCqIB52Ky72G9tkHZcijdyi7l4gV+ZeKtzBF939gJ6l+4jdl3kTArFAxLY/8Ra4AsRwJKVld223fkY1btFBJ4wnJ9z5RLJtLdOfjdvbf+iS8DihNKSsc9bXubcpbybu7citPUJtLvbOsnjlv1qqomaugivZrzbMCM/X9Dd4XO9Jd9m14sxk3j097ciZeAxojgYbLb8vWzBh4P1uFokUkEVdN+Hqhcl1a+m45tdLAaRoDT13F+H3NehWUltzMmVMmnq49SWG27EvE5tPXUvM6TKmJkAmQDz7iMULcgYepZrwKIyKIEXTALBYNwoCAaIWATON7p7pq1uqM6fA6L/la8pNI1rIiRZbEs2yocIox5QXm/if3ObiNKjSpyeEVJq0bJXcjewMPi/CqtSeUXBxxslJtNGpffWbGFHVr5Puel4JUvSTtbd+T35mfo+zjunVlGyf8Mbu/1PQ06airLklYuViYygS5fYNrnN0JcfQPs/IvNPuKPxYQLIXUXmFyV9gp9djQTfzAl4jJRT5MqvMIvRqWexrabUKWzMZ3XIMajTT5EqvRIJxaXV3W4CK4wgQWALALXIACyZLEsQAlg2CkUVsFItYKQFUiKIywLAUxJiNSJYgViXUQsBRSb8yjdhtySkugCFFfUq4DLFqf3KmiNu+K/wBwzily5j3H/nMXVguXfbYBcbFZLxRdUrEdJd4Coya5+pBvsuhChrREGSIZVGiWDcABIQsgBYNiFrkASLKIUiASxLBCALBsC5dICjQHEbYrYoWkBwGNFJABBjEKRYCkgWAWSCFTqrk2VdvBhrRQmcNttrFDJSICMF4/oQqP/9k=" alt="The Facelings" style="width: 450px; height: auto;">
+</section>
+
+<article class="buttons-container">
+  <article class="button" id="likeButton" title="Харесвам">
+    <svg viewBox="0 0 24 24" >
+      <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22L23 12.5v-2.5z"/>
+    </svg>
+    <span class="count" id="likeCount">0</span>
+  </article>
+
+  <article class="button" id="dislikeButton" title="Не харесвам">
+    <svg viewBox="0 0 24 24">
+      <path d="M15 3h-7c-.83 0-1.54.5-1.84 1.22L1 12.5v2.5c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32a1 1 0 0 0 .29.7L9.83 22l6.58-6.59c.37-.36.59-.86.59-1.41v-9c0-1.1-.9-2-2-2z"/>
+    </svg>
+    <span class="count" id="dislikeCount">0</span>
+  </article>
+    </article>
+
+<section id="comment-section">
+  <h2>Коментари</h2>
+  <textarea id="comment-input" placeholder="Напишете коментар тук..."></textarea>
+  <br />
+  <button id="submit-comment">Изпрати</button>
+
+  <article id="comments-list"></article>
+</section>
+
+<script>
+  const likeBtn = document.getElementById('likeButton');
+  const dislikeBtn = document.getElementById('dislikeButton');
+  const likeCountEl = document.getElementById('likeCount');
+  const dislikeCountEl = document.getElementById('dislikeCount');
+
+  let likes = parseInt(localStorage.getItem('likes')) || 0;
+  let dislikes = parseInt(localStorage.getItem('dislikes')) || 0;
+  let liked = localStorage.getItem('liked') === 'true';
+  let disliked = localStorage.getItem('disliked') === 'true';
+
+  likeCountEl.textContent = likes;
+  dislikeCountEl.textContent = dislikes;
+
+  if (liked) likeBtn.classList.add('liked');
+  if (disliked) dislikeBtn.classList.add('liked');
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      likes--;
+      liked = false;
+      likeBtn.classList.remove('liked');
+    } else {
+      likes++;
+      liked = true;
+      likeBtn.classList.add('liked');
+
+      if (disliked) {
+        dislikes--;
+        disliked = false;
+        dislikeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      dislikes--;
+      disliked = false;
+      dislikeBtn.classList.remove('liked');
+    } else {
+      dislikes++;
+      disliked = true;
+      dislikeBtn.classList.add('liked');
+
+      if (liked) {
+        likes--;
+        liked = false;
+        likeBtn.classList.remove('liked');
+      }
+    }
+    updateStorageAndUI();
+  });
+
+  function updateStorageAndUI() {
+    likeCountEl.textContent = likes;
+    dislikeCountEl.textContent = dislikes;
+    localStorage.setItem('likes', likes);
+    localStorage.setItem('dislikes', dislikes);
+    localStorage.setItem('liked', liked);
+    localStorage.setItem('disliked', disliked);
+  }
+
+  const commentInput = document.getElementById('comment-input');
+  const submitCommentBtn = document.getElementById('submit-comment');
+  const commentsList = document.getElementById('comments-list');
+
+  let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  renderComments();
+
+  submitCommentBtn.addEventListener('click', () => {
+    const commentText = commentInput.value.trim();
+    if (commentText === '') {
+      alert('Моля, напишете коментар преди да изпратите.');
+      return;
+    }
+    comments.push(commentText);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    commentInput.value = '';
+    renderComments();
+  });
+
+  function renderComments() {
+    commentsList.innerHTML = '';
+    if (comments.length === 0) {
+      commentsList.innerHTML = '<p>Няма коментари все още.</p>';
+      return;
+    }
+    comments.forEach(comment => {
+      const p = document.createElement('p');
+      p.classList.add('comment');
+      p.textContent = comment;
+      commentsList.appendChild(p);
+    });
+  }
+  </script>
+  
+</body>
+</html>
